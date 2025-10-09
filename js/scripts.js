@@ -217,12 +217,12 @@ $(document).ready(function () {
         // TODO: Update these MD5 hashes with your own invite codes
         // To generate MD5 hash for your invite code, you can use an online MD5 generator
         // For example, if your invite code is "123456", find its MD5 hash and replace below
-        if (MD5($('#invite_code').val()) !== 'YOUR_INVITE_CODE_MD5_HASH_1'
-            && MD5($('#invite_code').val()) !== 'YOUR_INVITE_CODE_MD5_HASH_2') {
+        if (MD5($('#invite_code').val()) !== 'd89f3a35931c386956c1a402a8e09941'
+            && MD5($('#invite_code').val()) !== '2383c7d07bce3c82e6da7741782de416') {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
         } else {
             // TODO: Replace this URL with your own Google Script Web App URL
-            $.post('YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE', data)
+            $.post('https://script.google.com/macros/s/AKfycbyD4L84OR9TY_lSnrqPJBM25yCVFdq0sVgSQKxekQduXgjDkLkUtPNUSO_pwTTRQekbpA/exec', data)
                 .done(function (data) {
                     console.log(data);
                     if (data.result === "error") {
