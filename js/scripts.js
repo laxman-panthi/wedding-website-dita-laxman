@@ -200,7 +200,7 @@ $(document).ready(function () {
             address: 'Sausalito Grand Ballroom, 10808 Granger Road, Garfield Heights, OH 44125',
 
             // Event Description
-            description: "We can't wait to see you on our big day. Ceremony at 10 AM, Reception at 5 PM. For any queries or issues, please contact Dita & Laxman at 216.322.9054."
+            description: "We can't wait to see you on our big day. Ceremony at 10 AM, Reception at 5 PM. For any queries or issues, please contact Dita @ 703.869.0484 or Laxman @ 330.541.0694."
         }
     });
 
