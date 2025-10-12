@@ -520,6 +520,82 @@
     </div>
 </section>
 
+<section class="song-request text-center" id="song-request">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h3>Request a Song for the Wedding!</h3>
+                <p>Let us know what song you want to hear on the dance floor. We'll do our best to play your favorite tunes!</p>
+                <form id="song-request-form" class="song-request-form">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-music"></i>
+                                <input name="song" class="" placeholder="Song name & artist" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-user"></i>
+                                <input name="from" class="" placeholder="Your name (optional)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" id="song-alert-wrapper"></div>
+                    </div>
+                    <button class="btn-fill rsvp-btn" type="submit">Request Song</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+// Song request form submission
+$(function() {
+    $('#song-request-form').on('submit', function(e) {
+        e.preventDefault();
+        var $form = $(this);
+        var $btn = $form.find('button[type="submit"]');
+        var $alert = $('#song-alert-wrapper');
+        $btn.prop('disabled', true).text('Sending...');
+        $alert.html('');
+        var data = {
+            song: $form.find('[name="song"]').val(),
+            from: $form.find('[name="from"]').val()
+        };
+        // Replace with your Google Apps Script Web App URL
+        var apiUrl = 'https://script.google.com/macros/s/AKfycby2476m1KPjtLQ7XzQTUGI20amUBfuYAJTjGM2Jwzi3MvzLgXHiLslXtl6h8jUFkeE8bw/exec';
+        $.ajax({
+            url: apiUrl,
+            method: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function(resp) {
+                $alert.html('<div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 4px; margin-top: 15px; border: 1px solid #c3e6cb;"><i class="fa fa-check-circle"></i> Thank you! Your song request was submitted successfully.</div>');
+                $form[0].reset();
+                setTimeout(function() {
+                    $alert.fadeOut(500, function() {
+                        $alert.html('').show();
+                    });
+                }, 3000);
+            },
+            error: function(xhr) {
+                $alert.html('<div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 4px; margin-top: 15px; border: 1px solid #f5c6cb;"><i class="fa fa-exclamation-triangle"></i> Sorry, there was a problem submitting your request. Please try again later.</div>');
+                setTimeout(function() {
+                    $alert.fadeOut(500, function() {
+                        $alert.html('').show();
+                    });
+                }, 5000);
+            },
+            complete: function() {
+                $btn.prop('disabled', false).text('Request Song');
+            }
+        });
+    });
+});
+</script>
+
 <footer>
     <div class="container">
         <div class="row">
