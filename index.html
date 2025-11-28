@@ -59,8 +59,21 @@
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <style>
+        /* Top scrolling banner for postponement notice */
+        .top-banner {position:fixed;top:0;left:0;width:100%;height:50px;background:#b71c1c;display:flex;align-items:center;overflow:hidden;z-index:99999;color:#fff;}
+        .top-banner .marquee {display:inline-block;padding-left:110%;white-space:nowrap;animation:marquee 16s linear infinite;color:#fff;font-weight:700;font-size:18px;letter-spacing:0.3px;text-shadow:0 1px 0 rgba(0,0,0,0.25);}
+        @keyframes marquee {0%{transform:translateX(0%);}100%{transform:translateX(-100%);}}
+        /* push page content down so banner doesn't cover header/navigation */
+        body {padding-top:50px;}
+        @media (max-width:768px){.top-banner .marquee{font-size:15px;padding-left:80%;}}
+        @media (max-width:480px){.top-banner{height:44px}body{padding-top:44px}.top-banner .marquee{font-size:13px;padding-left:60%;}}
+    </style>
 </head>
 <body id="top">
+<div class="top-banner" role="status" aria-live="polite">
+    <div class="marquee">Dear guests — important update: Our wedding has been postponed. Thank you for your understanding.</div>
+</div>
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
