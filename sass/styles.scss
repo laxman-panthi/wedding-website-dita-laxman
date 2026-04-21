@@ -669,6 +669,12 @@ Engagement Pics
     position: relative;
     overflow: hidden;
     border-radius: 4px;
+    aspect-ratio: 4/3; // Ensure consistent aspect ratio for gallery images
+    
+    img {
+      object-fit: cover; // Ensure images fill the container properly
+      height: 100%;
+    }
   }
   .img-wrap .overlay {
     position: absolute;

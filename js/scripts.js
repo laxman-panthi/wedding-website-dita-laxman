@@ -147,7 +147,7 @@ $(document).ready(function () {
 
     for (var i = 0; i < share_bar.length; i++) {
         var html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=ramswarooppatra&amp;hashtags=ramandantara&amp;count=horizontal"' +
+            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;hashtags=laxmanwedsdita&amp;count=horizontal"' +
             'style="width:105px; height:21px;">' +
             '</iframe>' +
 
@@ -184,23 +184,23 @@ $(document).ready(function () {
         },
         data: {
             // Event title
-            title: "Ram and Antara's Wedding",
+            title: "Dita and Laxman's Wedding",
 
             // Event start date
-            start: new Date('Nov 27, 2017 10:00'),
+            start: new Date('Nov 29, 2025 10:00'),
 
             // Event duration (IN MINUTES)
             // duration: 120,
 
             // You can also choose to set an end time
             // If an end time is set, this will take precedence over duration
-            end: new Date('Nov 29, 2017 00:00'),
+            end: new Date('Nov 29, 2025 22:00'),
 
             // Event Address
-            address: 'ITC Fortune Park Hotel, Kolkata',
+            address: 'Sausalito Grand Ballroom, 10808 Granger Road, Garfield Heights, OH 44125',
 
             // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
+            description: "We can't wait to see you on our big day. Ceremony at 10 AM, Reception at 5 PM. For any queries or issues, please contact Dita @ 703.869.0484 or Laxman @ 330.541.0694."
         }
     });
 
@@ -214,11 +214,15 @@ $(document).ready(function () {
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
 
-        if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
-            && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
+        // TODO: Update these MD5 hashes with your own invite codes
+        // To generate MD5 hash for your invite code, you can use an online MD5 generator
+        // For example, if your invite code is "123456", find its MD5 hash and replace below
+        if (MD5($('#invite_code').val()) !== 'd89f3a35931c386956c1a402a8e09941'
+            && MD5($('#invite_code').val()) !== '2383c7d07bce3c82e6da7741782de416') {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
         } else {
-            $.post('https://script.google.com/macros/s/AKfycbyo0rEknln8LedEP3bkONsfOh776IR5lFidLhJFQ6jdvRiH4dKvHZmtoIybvnxpxYr2cA/exec', data)
+            // TODO: Replace this URL with your own Google Script Web App URL
+            $.post('https://script.google.com/macros/s/AKfycbyD4L84OR9TY_lSnrqPJBM25yCVFdq0sVgSQKxekQduXgjDkLkUtPNUSO_pwTTRQekbpA/exec', data)
                 .done(function (data) {
                     console.log(data);
                     if (data.result === "error") {
@@ -241,7 +245,8 @@ $(document).ready(function () {
 
 // Google map
 function initMap() {
-    var location = {lat: 22.5932759, lng: 88.27027720000001};
+    // Sausalito Grand Ballroom coordinates
+    var location = {lat: 41.415, lng: -81.606};
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: location,
